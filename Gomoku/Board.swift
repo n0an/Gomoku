@@ -21,6 +21,8 @@ class BadLocaton: Error {
     
 }
 
+typealias Intersection = (row: Int, column: Int)
+
 class Board {
     let WIDTH = 19
     let HEIGHT = 19
@@ -32,14 +34,22 @@ class Board {
     }
     
     func place(row: Int, col: Int, player: Player) throws {
+        try place(intersection: Intersection(row, col), player: player)
+    }
+    
+    func place(intersection: Intersection, player: Player) throws {
         
-        let loc = try makeLocation(row: row, column: col)
+        let loc = try makeLocation(intersection: intersection)
         
         if placedStones[loc] != nil {
             throw SpaceOccupied()
         }
         
         placedStones[loc] = player
+    }
+    
+    func makeLocation(intersection: Intersection) throws -> Int {
+        return try makeLocation(row: intersection.row, column: intersection.column)
     }
     
     func makeLocation(row: Int, column: Int) throws -> Int {
@@ -51,7 +61,11 @@ class Board {
     }
     
     func get(row: Int, column: Int) throws -> Player {
-        let loc = try makeLocation(row: row, column: column)
+        return try get(intersection: Intersection(row, column))
+    }
+    
+    func get(intersection: Intersection) throws -> Player {
+        let loc = try makeLocation(intersection: intersection)
         
         if let stone = placedStones[loc] {
             return stone

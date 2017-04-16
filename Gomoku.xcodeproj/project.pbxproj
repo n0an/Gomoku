@@ -14,6 +14,7 @@
 		189571161EA37C6D00B97802 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189571141EA37C6D00B97802 /* LaunchScreen.storyboard */; };
 		1895713A1EA37D1600B97802 /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189571391EA37D1600B97802 /* BoardTest.swift */; };
 		1895713C1EA37DC200B97802 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713B1EA37DC200B97802 /* Board.swift */; };
+		1895713E1EA3DA1000B97802 /* GomokuRulesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713D1EA3DA1000B97802 /* GomokuRulesTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		1895712D1EA37C6D00B97802 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189571391EA37D1600B97802 /* BoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 		1895713B1EA37DC200B97802 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		1895713D1EA3DA1000B97802 /* GomokuRulesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GomokuRulesTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				189571221EA37C6D00B97802 /* Info.plist */,
 				189571391EA37D1600B97802 /* BoardTest.swift */,
+				1895713D1EA3DA1000B97802 /* GomokuRulesTest.swift */,
 			);
 			path = GomokuTests;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1895713A1EA37D1600B97802 /* BoardTest.swift in Sources */,
+				1895713E1EA3DA1000B97802 /* GomokuRulesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
