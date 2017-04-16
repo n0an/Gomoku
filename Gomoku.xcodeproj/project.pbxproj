@@ -17,6 +17,8 @@
 		1895713E1EA3DA1000B97802 /* GomokuRulesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713D1EA3DA1000B97802 /* GomokuRulesTest.swift */; };
 		189571401EA3DB8900B97802 /* GomokuRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713F1EA3DB8900B97802 /* GomokuRules.swift */; };
 		189571421EA3E94B00B97802 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189571411EA3E94B00B97802 /* GridView.swift */; };
+		18D028991EA4033E006383AF /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713B1EA37DC200B97802 /* Board.swift */; };
+		18D0289A1EA4033E006383AF /* GomokuRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713F1EA3DB8900B97802 /* GomokuRules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,7 +212,6 @@
 						DevelopmentTeam = 358V8FBM3U;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 189571071EA37C6D00B97802;
 					};
 					189571261EA37C6D00B97802 = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -284,6 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D028991EA4033E006383AF /* Board.swift in Sources */,
+				18D0289A1EA4033E006383AF /* GomokuRules.swift in Sources */,
 				1895713A1EA37D1600B97802 /* BoardTest.swift in Sources */,
 				1895713E1EA3DA1000B97802 /* GomokuRulesTest.swift in Sources */,
 			);
@@ -456,7 +459,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 358V8FBM3U;
 				INFOPLIST_FILE = GomokuTests/Info.plist;
@@ -465,7 +467,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gomoku.app/Gomoku";
 			};
 			name = Debug;
 		};
@@ -473,7 +474,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 358V8FBM3U;
 				INFOPLIST_FILE = GomokuTests/Info.plist;
@@ -481,7 +481,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.antonnovoselov.GomokuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gomoku.app/Gomoku";
 			};
 			name = Release;
 		};
@@ -532,6 +531,7 @@
 				189571321EA37C6D00B97802 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		189571331EA37C6D00B97802 /* Build configuration list for PBXNativeTarget "GomokuTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +540,7 @@
 				189571351EA37C6D00B97802 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		189571361EA37C6D00B97802 /* Build configuration list for PBXNativeTarget "GomokuUITests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +549,7 @@
 				189571381EA37C6D00B97802 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

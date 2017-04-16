@@ -24,30 +24,30 @@ class BoardTest: XCTestCase {
         XCTAssertEqual(0, stones)
     }
     
-    func testCanAddStonesInBounds() throws {
-        try board.place(intersection: Intersection(1,1), player: Player.White)
+    func testCanAddStonesInBounds() {
+        board.place(intersection: Intersection(1,1), player: Player.White)
         XCTAssertEqual(1, board.stonesPlaced())
         
-        var placedStone = try board.get(intersection: Intersection(1,1))
+        XCTAssertEqual(Player.White, board.get(intersection: Intersection(1,1)).0)
+        
+        board.place(intersection: Intersection(board.HEIGHT - 1, board.WIDTH - 1), player: Player.Black)
+        XCTAssertEqual(Player.Black, board.get(intersection: Intersection(board.HEIGHT - 1, board.WIDTH - 1)).0)
+    }
+    
+    func testKnowsAboutEmptyIntersections() {
+        var (placedStone, _) = board.get(Intersection(0,1))
+        XCTAssertEqual(Player.Empty, placedStone)
+        
+        board.place(intersection: Intersection(0,1), player: Player.White)
+        (placedStone, _) = board.get(Intersection(0,1))
         XCTAssertEqual(Player.White, placedStone)
-        
-        try board.place(intersection: Intersection(board.HEIGHT - 1, board.WIDTH - 1), player: Player.Black)
-        placedStone = try board.get(intersection: Intersection(board.HEIGHT - 1,board.WIDTH - 1))
-        XCTAssertEqual(Player.Black, placedStone)
     }
     
-    func testKnowsAboutEmptyIntersections() throws {
-        XCTAssertEqual(Player.Empty, try board.get(Intersection(0,1)))
+    func testCannotAddToOccupiedIntersection() {
+        board.place(intersection: Intersection(0,0), player: Player.White)
         
-        try board.place(intersection: Intersection(0,1), player: Player.White)
-        XCTAssertEqual(Player.White, try board.get(Intersection(0,1)))
-    }
-    
-    func testCannotAddToOccupiedIntersection() throws {
-        try board.place(intersection: Intersection(0,0), player: Player.White)
-        
-        XCTAssertThrowsError(try board.place(intersection: Intersection(0,0), player: Player.Black))
-        XCTAssertThrowsError(try board.place(intersection: Intersection(0,0), player: Player.White))
+        XCTAssertThrowsError(board.place(intersection: Intersection(0,0), player: Player.Black))
+        XCTAssertThrowsError(board.place(intersection: Intersection(0,0), player: Player.White))
 
     }
     

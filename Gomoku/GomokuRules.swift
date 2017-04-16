@@ -8,13 +8,14 @@
 
 class GomokuRules {
     
-    func isWin(_ board: Board) throws -> Bool {
+    func isWin(_ board: Board) -> Bool {
         let row = 0
         var playerPiecesInARow = 0
         
         for col in 0..<board.WIDTH {
             
-            let playerPiece = try board.get(intersection: Intersection(col, row))
+            let (playerPiece, _) = board.get(intersection: Intersection(col, row))
+            
             if playerPiece == Player.White {
                 playerPiecesInARow += 1
             }

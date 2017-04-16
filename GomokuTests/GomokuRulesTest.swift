@@ -46,9 +46,9 @@ class GomokuRulesTest: XCTestCase {
         try XCTAssertFalse(rules.isWin(board))
     }
     
-    func testSixInARowInTheFirstRow_isAWin() throws {
+    func testSixInARowInTheFirstRow_isAWin() {
         for col in 0..<6 {
-            try board.place(intersection: Intersection(col, 0), player: Player.White)
+            board.place(intersection: Intersection(col, 0), player: Player.White)
         }
         
         try XCTAssertTrue(rules.isWin(board))

@@ -33,44 +33,55 @@ class Board {
         return placedStones.count
     }
     
-    func place(row: Int, col: Int, player: Player) throws {
-        try place(intersection: Intersection(row, col), player: player)
+    func place(row: Int, col: Int, player: Player) -> Error? {
+        return place(intersection: Intersection(row, col), player: player)
     }
     
-    func place(intersection: Intersection, player: Player) throws {
+    func place(intersection: Intersection, player: Player) -> Error? {
         
-        let loc = try makeLocation(intersection: intersection)
+        let (loc, error) = makeLocation(intersection: intersection)
+        
+        if error != nil {
+            return error
+        }
         
         if placedStones[loc] != nil {
-            throw SpaceOccupied()
+            return SpaceOccupied()
         }
         
         placedStones[loc] = player
+        
+        return nil
     }
     
-    func makeLocation(intersection: Intersection) throws -> Int {
-        return try makeLocation(row: intersection.row, column: intersection.column)
+    func makeLocation(intersection: Intersection) -> (Int, Error?) {
+        return makeLocation(row: intersection.row, column: intersection.column)
     }
     
-    func makeLocation(row: Int, column: Int) throws -> Int {
+    func makeLocation(row: Int, column: Int) -> (Int, Error?) {
+        var error: Error?
         if row < 0 || row >= WIDTH || column < 0 || column >= HEIGHT {
-            throw BadLocaton()
+            error = BadLocaton()
         }
         
-        return column * WIDTH + row
+        return (column * WIDTH + row, error)
     }
     
-    func get(row: Int, column: Int) throws -> Player {
-        return try get(intersection: Intersection(row, column))
+    func get(row: Int, column: Int) -> (Player?, Error?) {
+        return get(intersection: Intersection(row, column))
     }
     
-    func get(intersection: Intersection) throws -> Player {
-        let loc = try makeLocation(intersection: intersection)
+    func get(intersection: Intersection) -> (Player?, Error?) {
+        let (loc, error) = makeLocation(intersection: intersection)
+        
+        if error != nil {
+            return (nil, error)
+        }
         
         if let stone = placedStones[loc] {
-            return stone
+            return (stone, nil)
         } else {
-            return Player.Empty
+            return (Player.Empty, nil)
         }
         
     }
