@@ -12,25 +12,30 @@ import XCTest
 
 class GameTest: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+        
+        Game.boardFactory = BoardFactoryImpl()
+    }
+    
+    
     func testWhiteStartsNewGame() {
-        let board = Board()
-        let rules = GomokuRules()
-        let game = Game(board: board, rules: rules)
+        
+        let game = Game()
         
         XCTAssertEqual(Player.White, game.whoseTurn())
     }
     
     func testAfterTurn_isOtherPlayerTurn() {
-        let board = Board()
-        let rules = GomokuRules()
-        let game = Game(board: board, rules: rules)
+        
+        let game = Game()
         
         game.takeTurn(0,0)
-        XCTAssertEqual(Player.White, board.get(0, 0).0)
+        XCTAssertEqual(Player.White, game.getBoard().get(0, 0).0)
         XCTAssertEqual(Player.Black, game.whoseTurn())
         
         game.takeTurn(0,1)
-        XCTAssertEqual(Player.Black, board.get(0, 1).0)
+        XCTAssertEqual(Player.Black, game.getBoard().get(0, 1).0)
         XCTAssertEqual(Player.White, game.whoseTurn())
         
     }

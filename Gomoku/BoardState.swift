@@ -1,5 +1,5 @@
 //
-//  Board.swift
+//  BoardState.swift
 //  Gomoku
 //
 //  Created by Anton Novoselov on 17/04/2017.
@@ -8,9 +8,11 @@
 
 import Foundation
 
-protocol Board {
-    func place(_ column: Int, _ row: Int, _ player: Player) -> BoardError?
+
+
+protocol BoardState {
     func get(_ column: Int, _ row: Int) -> (Player?, BoardError?)
     func getWidth() -> Int
     func getHeight() -> Int
 }
+
