@@ -17,10 +17,13 @@ class GamePresenterTest: XCTestCase {
         let presenter = GamePresenter()
         
         XCTAssertEqual("White's Turn", presenter.getPlayerStatus(player: Player.White))
-        
         XCTAssertEqual("Black's Turn", presenter.getPlayerStatus(player: Player.Black))
-
-        
+    }
+    
+    
+    func testFormatOfPlayerWinStatus() {
+        let presenter = GamePresenter()
+        XCTAssertEqual("White Wins!", presenter.getWinStatus(player: Player.White))
     }
     
 }

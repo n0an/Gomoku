@@ -8,22 +8,70 @@
 
 class GomokuRules {
     
-    func isWin(_ board: Board) -> Bool {
-        let row = 0
-        var playerPiecesInARow = 0
+    
+    
+    func isWin(_ board: Board, _ player: Player) -> Bool {
         
-        for col in 0..<board.WIDTH {
-            
-            let (playerPiece, _) = board.get(col, row)
-            
-            if playerPiece == Player.White {
-                playerPiecesInARow += 1
-            }
-            
+        if isRowWin(board, player) || isColWin(board, player) {
+            return true
+        } else {
+            return false
         }
         
         
-        return playerPiecesInARow > 4
     }
     
+    func isRowWin(_ board: Board, _ player: Player) -> Bool {
+        
+        return isConsecutive(board, player, board.HEIGHT, board.WIDTH) { (i, j) -> Player in
+            return board.get(j, i).0!
+        }
+    }
+    
+    func isColWin(_ board: Board, _ player: Player) -> Bool {
+        
+        return isConsecutive(board, player, board.WIDTH, board.HEIGHT) { (i, j) -> Player in
+            return board.get(i, j).0!
+        }
+    }
+    
+    func isConsecutive(_ board: Board, _ player: Player, _ iMax: Int, _ jMax: Int, getStone: (_ i: Int, _ j: Int) -> Player) -> Bool {
+        
+        var consecutiveStones = 0
+        
+        for col in 0..<iMax {
+            
+            for row in 0..<jMax {
+                
+                let playerPiece = getStone(col, row)
+                
+                if playerPiece == player {
+                    consecutiveStones += 1
+                    if consecutiveStones > 4 {
+                        return true
+                    }
+                } else {
+                    consecutiveStones = 0
+                }
+                
+            }
+        }
+        
+        return false
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
