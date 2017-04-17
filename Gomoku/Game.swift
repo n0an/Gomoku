@@ -17,28 +17,26 @@ protocol BoardFactory {
 class Game {
     
     let board: Board
+    let gameData: GameData
     let rules: GomokuRules
-    var player = Player.White
     
     static var boardFactory: BoardFactory!
     
     init() {
         self.board = Game.boardFactory.makeBoard()
+        self.gameData = GameData()
         self.rules = GomokuRules()
     }
     
-    func takeTurn(_ col: Int, _ row: Int) {
-        board.place(col, row, whoseTurn())
-        player = other(player: player)
+    func takeTurn(_ col: Int, _ row: Int) -> BoardError? {
+//        board.place(col, row, whoseTurn())
+//        player = other(player: player)
+        
+        return gameData.takeTurn(col, row)
+        
     }
     
-    func whoseTurn() -> Player {
-        return player
-    }
     
-    func other(player: Player) -> Player {
-        return player == Player.White ? Player.Black : Player.White
-    }
     
     func getBoard() -> BoardState {
         return board as! BoardState

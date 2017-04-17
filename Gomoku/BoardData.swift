@@ -1,5 +1,5 @@
 //
-//  BoardData.swift
+//  GameData.swift
 //  Gomoku
 //
 //  Created by Anton Novoselov on 16/04/2017.
@@ -11,15 +11,16 @@
 class BoardFactoryImpl: BoardFactory {
     
     func makeBoard() -> Board {
-        return BoardData()
+        return GameData()
     }
 }
 
-class BoardData: Board, BoardState {
+class GameData: Board, BoardState {
     private let WIDTH = 19
     private let HEIGHT = 19
     
     var placedStones: [Int: Player] = [:]
+    var player: Player = Player.White
     
     func getWidth() -> Int {
         return WIDTH
@@ -31,6 +32,19 @@ class BoardData: Board, BoardState {
     
     func stonesPlaced() -> Int {
         return placedStones.count
+    }
+    
+    func takeTurn(_ column: Int, _ row: Int) -> BoardError? {
+        place(column, row, player)
+        player = other(player)
+    }
+    
+    func whoseTurn() -> Player {
+        return player
+    }
+    
+    func other(_ player: Player) -> Player {
+        return player == Player.White ? Player.Black : Player.White
     }
     
     func place(_ column: Int, _ row: Int, _ player: Player) -> BoardError? {
