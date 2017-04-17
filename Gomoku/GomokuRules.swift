@@ -14,7 +14,7 @@ class GomokuRules {
         
         for col in 0..<board.WIDTH {
             
-            let (playerPiece, _) = board.get(intersection: Intersection(col, row))
+            let (playerPiece, _) = board.get(col, row)
             
             if playerPiece == Player.White {
                 playerPiecesInARow += 1

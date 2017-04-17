@@ -15,12 +15,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var board = Board()
-        try! board.place(intersection: Intersection(10, 10), player: Player.White)
-        try! board.place(intersection: Intersection(11, 11), player: Player.Black)
-        try! board.place(intersection: Intersection(8, 8), player: Player.White)
-        try! board.place(intersection: Intersection(9, 9), player: Player.Black)
-
+        let board = Board()
+//        board.place(10, 10, Player.White)
+//        board.place(11, 11, Player.Black)
+//        board.place(8, 8, Player.White)
+//        board.place(9, 9, Player.Black)
+//
 
         
         let gridRect = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.width)

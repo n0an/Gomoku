@@ -13,13 +13,12 @@ enum Player {
     case Empty
 }
 
-class SpaceOccupied: Error {
-    
+enum BoardError {
+    case SpaceOccupied, BadLocation
+
 }
 
-class BadLocaton: Error {
-    
-}
+
 
 typealias Intersection = (row: Int, column: Int)
 
@@ -33,20 +32,19 @@ class Board {
         return placedStones.count
     }
     
-    func place(row: Int, col: Int, player: Player) -> Error? {
-        return place(intersection: Intersection(row, col), player: player)
-    }
     
-    func place(intersection: Intersection, player: Player) -> Error? {
+    
+    
+    func place(_ row: Int, _ column: Int, _ player: Player) -> BoardError? {
         
-        let (loc, error) = makeLocation(intersection: intersection)
+        let (loc, error) = makeLocation(row, column)
         
         if error != nil {
             return error
         }
         
         if placedStones[loc] != nil {
-            return SpaceOccupied()
+            return .SpaceOccupied
         }
         
         placedStones[loc] = player
@@ -54,25 +52,20 @@ class Board {
         return nil
     }
     
-    func makeLocation(intersection: Intersection) -> (Int, Error?) {
-        return makeLocation(row: intersection.row, column: intersection.column)
-    }
     
-    func makeLocation(row: Int, column: Int) -> (Int, Error?) {
-        var error: Error?
+    func makeLocation(_ row: Int, _ column: Int) -> (Int, BoardError?) {
+        var error: BoardError?
         if row < 0 || row >= WIDTH || column < 0 || column >= HEIGHT {
-            error = BadLocaton()
+            error = .BadLocation
         }
         
         return (column * WIDTH + row, error)
     }
     
-    func get(row: Int, column: Int) -> (Player?, Error?) {
-        return get(intersection: Intersection(row, column))
-    }
     
-    func get(intersection: Intersection) -> (Player?, Error?) {
-        let (loc, error) = makeLocation(intersection: intersection)
+    
+    func get(_ row: Int, _ column: Int) -> (Player?, BoardError?) {
+        let (loc, error) = makeLocation(row, column)
         
         if error != nil {
             return (nil, error)
