@@ -10,31 +10,41 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    var statusLabel: UILabel!
+    var board: Board!
+    var rules: GomokuRules!
+    var game: Game!
+    var presenter: GamePresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let board = Board()
-//        board.place(10, 10, Player.White)
-//        board.place(11, 11, Player.Black)
-//        board.place(8, 8, Player.White)
-//        board.place(9, 9, Player.Black)
-//
-
+        board = Board()
+        rules = GomokuRules()
+        game = Game(board: board, rules: rules)
+        presenter = GamePresenter()
         
         let gridRect = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.width)
-        
-        let gridView = GridView(frame: gridRect, board: board)
-        
+        let gridView = GridView(frame: gridRect, game: game)
         view.addSubview(gridView)
+        gridView.tapResponder =
+        
+        let labelWidth: CGFloat = 100.0
+        let statusRect = CGRect(x: view.frame.midX - labelWidth/2, y: 100, width: labelWidth, height: 25)
+        statusLabel = UILabel(frame: statusRect)
+        statusLabel.textAlignment = .center
+        
+        view.addSubview(statusLabel)
+        
+        statusLabel.text = presenter.getPlayerStatus(player: game.whoseTurn())
+        
+        
+        
+        
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
 
 }

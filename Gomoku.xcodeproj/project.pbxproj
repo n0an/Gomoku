@@ -19,6 +19,12 @@
 		189571421EA3E94B00B97802 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189571411EA3E94B00B97802 /* GridView.swift */; };
 		18D028991EA4033E006383AF /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713B1EA37DC200B97802 /* Board.swift */; };
 		18D0289A1EA4033E006383AF /* GomokuRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895713F1EA3DB8900B97802 /* GomokuRules.swift */; };
+		18D0289D1EA50A55006383AF /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0289C1EA50A55006383AF /* GameTest.swift */; };
+		18D0289F1EA50CFE006383AF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0289E1EA50CFE006383AF /* Game.swift */; };
+		18D028A01EA50CFE006383AF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0289E1EA50CFE006383AF /* Game.swift */; };
+		18D028A21EA51453006383AF /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D028A11EA51453006383AF /* GamePresenter.swift */; };
+		18D028A31EA51453006383AF /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D028A11EA51453006383AF /* GamePresenter.swift */; };
+		18D028A51EA5161B006383AF /* GamePresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D028A41EA5161B006383AF /* GamePresenterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +61,10 @@
 		1895713D1EA3DA1000B97802 /* GomokuRulesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GomokuRulesTest.swift; sourceTree = "<group>"; };
 		1895713F1EA3DB8900B97802 /* GomokuRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GomokuRules.swift; sourceTree = "<group>"; };
 		189571411EA3E94B00B97802 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		18D0289C1EA50A55006383AF /* GameTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
+		18D0289E1EA50CFE006383AF /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		18D028A11EA51453006383AF /* GamePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePresenter.swift; sourceTree = "<group>"; };
+		18D028A41EA5161B006383AF /* GamePresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePresenterTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,8 @@
 				1895713B1EA37DC200B97802 /* Board.swift */,
 				1895713F1EA3DB8900B97802 /* GomokuRules.swift */,
 				189571411EA3E94B00B97802 /* GridView.swift */,
+				18D0289E1EA50CFE006383AF /* Game.swift */,
+				18D028A11EA51453006383AF /* GamePresenter.swift */,
 			);
 			path = Gomoku;
 			sourceTree = "<group>";
@@ -124,6 +136,8 @@
 				189571221EA37C6D00B97802 /* Info.plist */,
 				189571391EA37D1600B97802 /* BoardTest.swift */,
 				1895713D1EA3DA1000B97802 /* GomokuRulesTest.swift */,
+				18D0289C1EA50A55006383AF /* GameTest.swift */,
+				18D028A41EA5161B006383AF /* GamePresenterTest.swift */,
 			);
 			path = GomokuTests;
 			sourceTree = "<group>";
@@ -274,8 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1895710E1EA37C6D00B97802 /* ViewController.swift in Sources */,
+				18D0289F1EA50CFE006383AF /* Game.swift in Sources */,
 				189571401EA3DB8900B97802 /* GomokuRules.swift in Sources */,
 				1895710C1EA37C6D00B97802 /* AppDelegate.swift in Sources */,
+				18D028A21EA51453006383AF /* GamePresenter.swift in Sources */,
 				189571421EA3E94B00B97802 /* GridView.swift in Sources */,
 				1895713C1EA37DC200B97802 /* Board.swift in Sources */,
 			);
@@ -286,7 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D028991EA4033E006383AF /* Board.swift in Sources */,
+				18D028A01EA50CFE006383AF /* Game.swift in Sources */,
 				18D0289A1EA4033E006383AF /* GomokuRules.swift in Sources */,
+				18D0289D1EA50A55006383AF /* GameTest.swift in Sources */,
+				18D028A51EA5161B006383AF /* GamePresenterTest.swift in Sources */,
+				18D028A31EA51453006383AF /* GamePresenter.swift in Sources */,
 				1895713A1EA37D1600B97802 /* BoardTest.swift in Sources */,
 				1895713E1EA3DA1000B97802 /* GomokuRulesTest.swift in Sources */,
 			);
