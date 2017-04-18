@@ -10,7 +10,7 @@
 
 class BoardFactoryImpl: BoardFactory {
     
-    func makeBoard() -> Board {
+    func makeBoard() -> Board & BoardState {
         return GameData()
     }
 }
@@ -35,8 +35,9 @@ class GameData: Board, BoardState {
     }
     
     func takeTurn(_ column: Int, _ row: Int) -> BoardError? {
-        place(column, row, player)
+        let error = place(column, row, player)
         player = other(player)
+        return error
     }
     
     func whoseTurn() -> Player {

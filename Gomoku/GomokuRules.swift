@@ -8,7 +8,7 @@
 
 class GomokuRules {
     
-    
+    let winLength = 5
     
     func isWin(_ board: BoardState, _ player: Player) -> Bool {
         
@@ -36,42 +36,25 @@ class GomokuRules {
     }
     
     func isConsecutive(_ board: BoardState, _ player: Player, _ iMax: Int, _ jMax: Int, getStone: (_ i: Int, _ j: Int) -> Player) -> Bool {
-        
         var consecutiveStones = 0
         
-        for col in 0..<iMax {
-            
-            for row in 0..<jMax {
-                
-                let playerPiece = getStone(col, row)
-                
-                if playerPiece == player {
-                    consecutiveStones += 1
-                    if consecutiveStones > 4 {
-                        return true
-                    }
-                } else {
-                    consecutiveStones = 0
+        for i in 0..<iMax {
+            for j in 0..<jMax {
+                let playerPiece = getStone(i, j)
+                consecutiveStones = calculateConsecutiveStones(consecutiveStones, playerPiece, player)
+                if consecutiveStones >= winLength {
+                    return true
                 }
-                
             }
         }
         
         return false
-
+    }
+    
+    func calculateConsecutiveStones(_ consecutiveStones: Int, _ playerPiece: Player, _ player: Player) -> Int {
+        return playerPiece == player ? consecutiveStones + 1 : 0
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

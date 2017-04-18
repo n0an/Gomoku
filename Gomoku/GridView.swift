@@ -17,7 +17,10 @@ class GridView: UIView {
     let cellCount: Int
     let cellSize: CGFloat
     
-    var tapper: UITapGestureRecognizer!
+    lazy var tapper: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(GridView.tapped(_:)))
+    }()
+    
     var tapResponder: TapResponder?
     
     init(frame: CGRect, board: BoardState) {
@@ -30,7 +33,8 @@ class GridView: UIView {
         
         super.init(frame: frame)
         
-        self.tapper = UITapGestureRecognizer(target: self, action: #selector(self.tapped(recognizer:)))
+//        self.tapper = UITapGestureRecognizer(target: self, action: #selector(self.tapped(recognizer:)))
+        
         self.addGestureRecognizer(self.tapper)
         
         self.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 226/255, blue: 124/255, alpha: 1)
@@ -45,7 +49,7 @@ class GridView: UIView {
     }
    
     
-    func tapped(recognizer: UITapGestureRecognizer) {
+    func tapped(_ recognizer: UITapGestureRecognizer) {
         let locationOfTap = tapper.location(ofTouch: 0, in: self)
         
         let tappedColumn = Int(((locationOfTap.x - cellSize) / cellSize) + 0.5)

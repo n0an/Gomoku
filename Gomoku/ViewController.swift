@@ -10,18 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var statusLabel: UILabel!
+    lazy var statusLabel: UILabel = {
+        return self.makeStatusLabel()
+    }()
 
     var rules: GomokuRules!
-    var game: Game!
-    var presenter: GamePresenter!
+    lazy var game: Game = {
+        return Game()
+    }()
+    
+    lazy var presenter: GamePresenter = {
+        return GamePresenter()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        game = Game()
-
-        presenter = GamePresenter()
+        
         
         let gridRect = CGRect(x: 0, y: 200, width: self.view.frame.width, height: self.view.frame.width)
         let gridView = GridView(frame: gridRect, board: game.getBoard())
@@ -30,10 +35,10 @@ class ViewController: UIViewController {
             self.respondToTap(col: col, row: row)
         }
         
-        let labelWidth: CGFloat = 100.0
-        let statusRect = CGRect(x: view.frame.midX - labelWidth/2, y: 100, width: labelWidth, height: 25)
-        statusLabel = UILabel(frame: statusRect)
-        statusLabel.textAlignment = .center
+//        let labelWidth: CGFloat = 100.0
+//        let statusRect = CGRect(x: view.frame.midX - labelWidth/2, y: 100, width: labelWidth, height: 25)
+//        statusLabel = UILabel(frame: statusRect)
+//        statusLabel.textAlignment = .center
         
         view.addSubview(statusLabel)
         
@@ -43,18 +48,26 @@ class ViewController: UIViewController {
     }
     
     func respondToTap(col: Int, row: Int) {
-        self.game.takeTurn(col, row)
         
-        if game.getRules().isWin(game.getBoard(), game.whoseTurn()) {
-            statusLabel.text = presenter.getWinStatus(player: game.whoseTurn())
+        let tappinglayer = game.whoseTurn()
+        game.takeTurn(col, row)
+        
+        if game.getRules().isWin(game.getBoard(), tappinglayer) {
+            statusLabel.text = presenter.getWinStatus(player: tappinglayer)
         } else {
             
-            self.statusLabel.text = self.presenter.getPlayerStatus(player: self.game.whoseTurn())
+            self.statusLabel.text = self.presenter.getPlayerStatus(player: tappinglayer)
         }
         
     }
 
-    
+    func makeStatusLabel() -> UILabel {
+        let labelWidth: CGFloat = 100.0
+        let statusRect = CGRect(x: view.frame.midX - labelWidth/2, y: 100, width: labelWidth, height: 25)
+        let label = UILabel(frame: statusRect)
+        label.textAlignment = .center
+        return label
+    }
 
 
 }
